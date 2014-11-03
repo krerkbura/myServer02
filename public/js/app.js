@@ -1,5 +1,7 @@
-$scope.books = [
-		{title: 'Angular', price: 200},
-		{title: 'Node.js', price: 300},
-		{title: 'Css', price: 400}
-	];
+angular.module("myApp", [])
+.controller('mainCtrl',function($scope, $http){
+	$scope.books = [];
+	$http.get('/api/book').success(function(data){
+		$scope.books = data;
+	})	
+})
